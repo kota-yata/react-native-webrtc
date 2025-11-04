@@ -163,6 +163,12 @@
         }
     }
 
+    // presumeWritableWhenFullyRelayed (private api)
+    if (json[@"presumeWritableWhenFullyRelayed"] != nil &&
+        [json[@"presumeWritableWhenFullyRelayed"] isKindOfClass:[NSNumber class]]) {
+        config.shouldPresumeWritableWhenFullyRelayed = [RCTConvert BOOL:json[@"presumeWritableWhenFullyRelayed"]];
+    }
+
     if (json[@"tcpCandidatePolicy"] != nil && [json[@"tcpCandidatePolicy"] isKindOfClass:[NSString class]]) {
         NSString *tcpCandidatePolicy = json[@"tcpCandidatePolicy"];
         if ([tcpCandidatePolicy isEqualToString:@"enabled"]) {
